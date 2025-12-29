@@ -102,6 +102,11 @@
                 <tbody class="table-cart">
                 </tbody>
               </table>
+              <p id="empty_cart_msg" style="display:none; text-align:center; font-size:18px; color:#777;">No items in
+                cart</p>
+              <p id="empty_cart_msg" style="display:none; text-align:center; font-size:18px; color:#777;">🛒 Add items
+                in cart to proceed for checkout</p>
+
             </div>
           </form>
         </div>
@@ -110,10 +115,10 @@
           <div class="col-md-6">
             <div class="row mb-5">
               <div class="col-md-6 mb-3 mb-md-0">
-                <button class="btn btn-primary btn-sm btn-block">Update Cart</button>
+                <a class="btn btn-primary btn-sm btn-block" href="products.html">Upgrade Cart</a>
               </div>
               <div class="col-md-6">
-                <button class="btn btn-outline-primary btn-sm btn-block" href='products.html'>Continue Shopping</button>
+                <a class="btn btn-outline-primary btn-sm btn-block" href='index.html'>Continue Shopping</a>
               </div>
             </div>
             <div class="row">
@@ -142,7 +147,7 @@
                     <span class="text-black">Subtotal</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
+                    <strong class="text-black" id='Subtotal'>₹0</strong>
                   </div>
                 </div>
                 <div class="row mb-5">
@@ -150,7 +155,7 @@
                     <span class="text-black">Total</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
+                    <strong class="text-black" id='grand_total'>₹0</strong>
                   </div>
                 </div>
 

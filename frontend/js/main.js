@@ -273,40 +273,39 @@ async function load_single_product() {
 if (window.location.pathname.includes("product.html")) {
 	load_single_product();
 }
-if (window.location.pathname.includes("product.html")) {
-	load_single_product();
 
-	const addBtn = document.getElementById("addToCartBtn");
-	if (addBtn) {
-		addBtn.addEventListener("click", async () => {
-			const params = new URLSearchParams(window.location.search);
-			const productId = params.get("id");
+const addBtn = document.getElementById("addToCartBtn");
+if (addBtn) {
+	addBtn.addEventListener("click", async () => {
+		const params = new URLSearchParams(window.location.search);
+		const productId = params.get("id");
 
-			const size = document.querySelector(
-				'input[name="shop-size"]:checked'
-			)?.value;
+		const size = document.querySelector(
+			'input[name="shop-size"]:checked'
+		)?.value;
 
-			const quantity = parseInt(
-				document.getElementById("quantity-input").value
-			);
+		const quantity = parseInt(
+			document.getElementById("quantity-input").value
+		);
 
-			if (!size) {
-				alert("Please select a size");
-				return;
-			}
+		if (!size) {
+			alert("Please select a size");
+			return;
+		}
 
-			await fetch(`http://127.0.0.1:8000/cart/add/${productId}`, {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({
-					p_size: size,
-					p_quantity: quantity
-				})
-			});
+		await fetch(`http://127.0.0.1:8000/cart/add/${productId}`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				p_size: size,
+				p_quantity: quantity
+			})
 
-			window.location.href = "cart.html";
 		});
-	}
+
+		window.location.href = "cart.html";
+		updateCartCount();
+	});
 }
 
 //cart per product total//
@@ -315,6 +314,7 @@ async function loadCart() {
 	const data = await res.json();
 
 	const tbody = document.querySelector(".table-cart");
+
 	tbody.innerHTML = "";
 
 	data.items.forEach(p => {
@@ -327,8 +327,7 @@ async function loadCart() {
       <td>₹${p.p_price}</td>
       <td>${p.p_quantity}</td>
       <td>₹${p.total_price}</td>
-      <td><button onclick="removeItem(${p.c_id})" class="btn btn-danger btn-sm">X</button></td>
-
+      <td><button type="button"class="btn btn-danger btn-sm"onclick="removeItem(this, ${p.c_id})"> X</button></td>
     `;
 
 		tbody.appendChild(tr);
@@ -344,13 +343,110 @@ function removeItem(btn, c_id) {
 	})
 		.then(res => {
 			if (!res.ok) throw new Error("Delete failed");
-
-			// 🔥 remove row from DOM
 			const row = btn.closest("tr");
 			row.remove();
+			updateCartCount();
+			loadtotals();
 		})
 		.catch(err => {
 			console.error(err);
 			alert("Unable to delete item");
 		});
 }
+
+
+// checkout per product total//
+async function loadCheckout() {
+	const res = await fetch("http://127.0.0.1:8000/cart/perproducttotal");
+	const data = await res.json();
+
+	const tbody = document.getElementById("checkout_table");
+	tbody.innerHTML = "";
+
+	data.items.forEach(p => {
+		const tr = document.createElement("tr");
+
+		tr.innerHTML = `
+		<tr>
+      		<td>${p.p_name} x ${p.p_quantity}</td>
+      		<td>₹${p.total_price}</td>
+	    </tr>
+    `;
+		tbody.appendChild(tr);
+	});
+}
+
+//cart subtotal and grand total//
+async function loadtotals() {
+	const res = await fetch("http://127.0.0.1:8000/cart/total");
+	const data = await res.json();
+	document.getElementById("Subtotal").innerText = `₹${data.grand_total}`;
+	document.getElementById("grand_total").innerText = `₹${data.grand_total}`;
+}
+document.addEventListener("DOMContentLoaded", () => {
+	loadCheckout();
+	loadtotals();
+});
+
+async function loadcheckouttotals() {
+	const res = await fetch("http://127.0.0.1:8000/cart/total");
+	const data = await res.json();
+
+	const total = data.grand_total;
+
+	document.getElementById("checkout_total").innerHTML = `
+		<tr>
+			<td><strong>Cart Subtotal<strong></td>
+			<td><strong>₹${total}</strong></td>
+		</tr>
+		<tr>
+			<td><strong>Order Total</strong></td>
+			<td><strong>₹${total}</strong></td>
+		</tr>
+	`;
+
+	return total;
+}
+document.addEventListener("DOMContentLoaded", () => {
+
+	if (document.getElementById("cart_table")) {
+		loadCheckout();
+	}
+
+
+	if (document.getElementById("checkout_table")) {
+		loadtotals();
+	}
+
+	if (document.getElementById("checkout_total")) {
+		loadcheckouttotals();
+	}
+});
+
+//update bag number//
+async function updateCartCount() {
+	try {
+		const res = await fetch("http://127.0.0.1:8000/cart/perproducttotal");
+		const data = await res.json();
+
+		const countSpan = document.querySelector(".bag .number");
+
+		if (!data.items || data.items.length === 0) {
+			countSpan.innerText = "0";
+			return;
+		}
+
+		// Sum quantities
+		const totalQty = data.items.reduce(
+			(sum, item) => sum + item.p_quantity,
+			0
+		);
+
+		countSpan.innerText = totalQty;
+	} catch (err) {
+		console.error("Failed to update cart count:", err);
+	}
+}
+document.addEventListener("DOMContentLoaded", () => {
+	updateCartCount();
+});

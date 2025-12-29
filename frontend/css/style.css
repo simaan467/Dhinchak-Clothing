@@ -1454,3 +1454,7 @@ a:hover {
   justify-content: center;
   text-align: center;
 }
+
+#checkout_total {
+  border-top: 20px solid transparent;
+}
