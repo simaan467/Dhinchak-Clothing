@@ -307,6 +307,27 @@ if (addBtn) {
 		updateCartCount();
 	});
 }
+//product quantity increment/decrement//
+
+const qtyInput = document.getElementById("quantity-input");
+const plusbtn = document.getElementById("increaseQty");
+const minusbtn = document.getElementById("decreaseQty");
+if (qtyInput && plusbtn && minusbtn) {
+	plusbtn.addEventListener("click", () => {
+		let currentQty = parseInt(qtyInput.value);
+		qtyInput.value = currentQty + 1;
+	});
+
+	minusbtn.addEventListener("click", () => {
+		let currentQty = parseInt(qtyInput.value);
+		if (currentQty > 1) {
+			qtyInput.value = currentQty - 1;
+		}
+	});
+};
+
+
+
 
 //cart per product total//
 async function loadCart() {

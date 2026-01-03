@@ -84,135 +84,137 @@
       <label><input type="radio" name="shop-size" value="Large"><strong> Large</strong></label>
       <label><input type="radio" name="shop-size" value="XL"><strong>Extra XL</strong></label>
     </div>
-    <div class="quantity-item">
-      <input id="quantity-input" type="text" class="form-control text-center" value="1">
+    <div class="quantity-item d-flex align-items-center gap-2">
+      <button id="decreaseQty" class="btn btn-outline-primary">−</button>
+      <input id="quantity-input" type="text" class="form-control text-center" value="1" readonly style="width: 60px;" />
+      <button id="increaseQty" class="btn btn-outline-primary">+</button>
     </div>
-    <button id="addToCartBtn" class="btn btn-primary">Add To Cart</button>
-  </div>
+    <button id="addToCartBtn" class="addToCartBtn">Add To Cart</button>
 
 
-  <div class="site-section block-3 site-blocks-2">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-7 site-section-heading text-center pt-4">
-          <h2>Featured Products</h2>
+
+    <div class="site-section block-3 site-blocks-2">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 site-section-heading text-center pt-4">
+            <h2>Featured Products</h2>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 block-3">
-          <div class="nonloop-block-3 owl-carousel">
-            <div class="item">
-              <div class="item-entry">
-                <a href="#" class="product-item md-height bg-gray d-block">
-                  <img src="images/model_1.png" alt="Image" class="img-fluid">
-                </a>
-                <h2 class="item-title"><a href="#">Smooth Cloth</a></h2>
-                <strong class="item-price"><del>$46.00</del> $28.00</strong>
-                <div class="star-rating">
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
+        <div class="row">
+          <div class="col-md-12 block-3">
+            <div class="nonloop-block-3 owl-carousel">
+              <div class="item">
+                <div class="item-entry">
+                  <a href="#" class="product-item md-height bg-gray d-block">
+                    <img src="images/model_1.png" alt="Image" class="img-fluid">
+                  </a>
+                  <h2 class="item-title"><a href="#">Smooth Cloth</a></h2>
+                  <strong class="item-price"><del>$46.00</del> $28.00</strong>
+                  <div class="star-rating">
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="item">
-              <div class="item-entry">
-                <a href="#" class="product-item md-height bg-gray d-block">
-                  <img src="images/prod_3.png" alt="Image" class="img-fluid">
-                </a>
-                <h2 class="item-title"><a href="#">Blue Shoe High Heels</a></h2>
-                <strong class="item-price"><del>$46.00</del> $28.00</strong>
+              <div class="item">
+                <div class="item-entry">
+                  <a href="#" class="product-item md-height bg-gray d-block">
+                    <img src="images/prod_3.png" alt="Image" class="img-fluid">
+                  </a>
+                  <h2 class="item-title"><a href="#">Blue Shoe High Heels</a></h2>
+                  <strong class="item-price"><del>$46.00</del> $28.00</strong>
 
-                <div class="star-rating">
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
+                  <div class="star-rating">
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="item">
-              <div class="item-entry">
-                <a href="#" class="product-item md-height bg-gray d-block">
-                  <img src="images/model_5.png" alt="Image" class="img-fluid">
-                </a>
-                <h2 class="item-title"><a href="#">Denim Jacket</a></h2>
-                <strong class="item-price"><del>$46.00</del> $28.00</strong>
+              <div class="item">
+                <div class="item-entry">
+                  <a href="#" class="product-item md-height bg-gray d-block">
+                    <img src="images/model_5.png" alt="Image" class="img-fluid">
+                  </a>
+                  <h2 class="item-title"><a href="#">Denim Jacket</a></h2>
+                  <strong class="item-price"><del>$46.00</del> $28.00</strong>
 
-                <div class="star-rating">
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
-                  <span class="icon-star2 text-warning"></span>
+                  <div class="star-rating">
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                    <span class="icon-star2 text-warning"></span>
+                  </div>
+
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <footer class="site-footer custom-border-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="footer-heading mb-4">Quick Links</h3>
+    <footer class="site-footer custom-border-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 class="footer-heading mb-4">Quick Links</h3>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li><a href="#">Sell online</a></li>
+                  <li><a href="#">Features</a></li>
+                  <li><a href="#">Shopping cart</a></li>
+                  <li><a href="#">Store builder</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li><a href="#">Mobile commerce</a></li>
+                  <li><a href="#">Dropshipping</a></li>
+                  <li><a href="#">Website development</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li><a href="#">Point of sale</a></li>
+                  <li><a href="#">Hardware</a></li>
+                  <li><a href="#">Software</a></li>
+                </ul>
+              </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+          </div>
+
+          <div class="col-md-6 col-lg">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">Contact Info</h3>
               <ul class="list-unstyled">
-                <li><a href="#">Sell online</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Shopping cart</a></li>
-                <li><a href="#">Store builder</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-lg-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Mobile commerce</a></li>
-                <li><a href="#">Dropshipping</a></li>
-                <li><a href="#">Website development</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-lg-4">
-              <ul class="list-unstyled">
-                <li><a href="#">Point of sale</a></li>
-                <li><a href="#">Hardware</a></li>
-                <li><a href="#">Software</a></li>
+                <li class="address">bommanahalli,bengaluru</li>
+                <li class="phone"><a href="tel://23923929210">6366676678</a></li>
+                <li class="email">simaanaftab@gmail.com.com</li>
               </ul>
             </div>
           </div>
         </div>
-
-        <div class="col-md-6 col-lg">
-          <div class="block-5 mb-5">
-            <h3 class="footer-heading mb-4">Contact Info</h3>
-            <ul class="list-unstyled">
-              <li class="address">bommanahalli,bengaluru</li>
-              <li class="phone"><a href="tel://23923929210">6366676678</a></li>
-              <li class="email">simaanaftab@gmail.com.com</li>
-            </ul>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+              Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script> All rights reserved by dhinChak.in</a>
+            </p>
           </div>
-        </div>
-      </div>
-      <div class="row pt-5 mt-5 text-center">
-        <div class="col-md-12">
-          <p>
-            Copyright &copy;
-            <script>document.write(new Date().getFullYear());</script> All rights reserved by dhinChak.in</a>
-          </p>
-        </div>
 
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
